@@ -22,7 +22,7 @@ export const searchUsers = async (text) => {
 export const getUserAndRepos = async (login) => {
   const [user, repos] = await Promise.all([
     github.get(`/users/${login}`),
-    github.get(`/users/${login}/repos`),
+    github.get(`/users/${login}/repos?sort=pushed&direction=desc&per_page=5`),
   ]);
 
   return {
